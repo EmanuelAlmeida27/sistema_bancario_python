@@ -12,7 +12,9 @@ limite_saques = 3
 limite_dinheiro = 500
 qtde_saque = 0
 
-menu = input("""
+while True:
+    
+    menu = input("""
 Selecione uma operação
 
 [d] Deposito
@@ -21,8 +23,6 @@ Selecione uma operação
 [q] Sair
 
 >>>""") 
-
-while True:
     
     # DEPÓSITO
     
@@ -38,14 +38,14 @@ while True:
         print(f"Você depositou R$ {deposito:.2f} Reais\n")
         print(f"Seu saldo atual é: R$ {saldo:.2f} Reais\n")
         extrato += f"- Depósito de R$ {deposito:.2f} Reais\n"
-        menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")        
+                
         
     # SAQUE    
     
     elif menu == "s":
         if qtde_saque >= limite_saques:
             print("Limite diário de saque excedido!")
-            menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")
+            
         
         else:
             print(f"Seu saldo atual é: R$ {saldo:.2f} Reais\n")
@@ -57,7 +57,7 @@ while True:
             
             if saque > limite_dinheiro:
                 print("Valor de saque não pode ser maior que R$ 500.00 Reais\n")
-                menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")
+                
 
             elif saque <= limite_dinheiro and saque > 0:
                 qtde_saque += 1
@@ -65,7 +65,7 @@ while True:
                 print(f"Você sacou R$ {saque:.2f} Reais\n")
                 print(f"Seu saldo atual é: R$ {saldo:.2f} Reais\n")
                 extrato += f"- Saque de R$ {saque:.2f} Reais\n"
-                menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")
+                
             
             else:
                 print("Algo deu errado :(")
@@ -75,7 +75,7 @@ while True:
     elif menu == "e":
         if extrato == "":
             print(f"Não há nada no extrato.\nSeu saldo atual é R$ {saldo:.2f} Reais")
-        menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")
+        print(extrato)
                 
     # SAIR
         
@@ -84,11 +84,19 @@ while True:
         if menu == "sim":
             break
         elif menu == "nao":
-            menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")
+            menu = input("""
+Selecione uma operação
+
+[d] Deposito
+[s] Saque
+[e] Extrato
+[q] Sair
+
+>>>""") 
         else:
             print("Comando não reconhecido!")
-            menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")
+            
     
     else:
         print("Operação inválida.\n")
-        menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")
+        
