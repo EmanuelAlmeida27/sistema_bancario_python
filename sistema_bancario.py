@@ -28,13 +28,17 @@ while True:
     
     if menu == "d":
         print(f"Seu saldo atual é: R$ {saldo:.2f} Reais\n")
-        deposito = int(input("Digite o valor de depósito: "))
+        try:
+            deposito = float(input("Digite o valor de depósito: "))
+        except ValueError:
+            print("Digite um número válido!\n")
+            continue
+        #deposito = float(input("Digite o valor de depósito: "))
         saldo += deposito
         print(f"Você depositou R$ {deposito:.2f} Reais\n")
         print(f"Seu saldo atual é: R$ {saldo:.2f} Reais\n")
         extrato += f"- Depósito de R$ {deposito:.2f} Reais\n"
-        menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")
-        
+        menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")        
         
     # SAQUE    
     
@@ -45,7 +49,11 @@ while True:
         
         else:
             print(f"Seu saldo atual é: R$ {saldo:.2f} Reais\n")
-            saque = int(input("Digite o valor do saque: "))
+            try:
+                saque = float(input("Digite o valor do saque: "))
+            except ValueError:
+                print("Digite um número válido!")
+                continue
             
             if saque > limite_dinheiro:
                 print("Valor de saque não pode ser maior que R$ 500.00 Reais\n")
@@ -67,7 +75,6 @@ while True:
     elif menu == "e":
         if extrato == "":
             print(f"Não há nada no extrato.\nSeu saldo atual é R$ {saldo:.2f} Reais")
-        print(extrato)
         menu = input("Selecione uma operação\n\n[d] Deposito\n[s] Saque\n[e] Extrato\n[q] Sair\n\n>>> ")
                 
     # SAIR
