@@ -103,7 +103,7 @@ Selecione uma operação
     # SAIR
         
     elif menu == "q":
-        menu = input("Você realmente deseja sair? ").lower().replace("ã", "a")
+        menu = input("Você realmente deseja sair?\n[sim]\n[não]\n>>> ").lower().replace("ã", "a")
         if menu == "sim":
             break
         elif menu == "nao":
